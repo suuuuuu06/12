@@ -4,6 +4,7 @@
 
 
 
+
 static int bingoBoard[N_SIZE][N_SIZE];
 static int numberStatus[N_SIZE*N_SIZE];
 
@@ -62,7 +63,7 @@ void bingo_printBoard(void)
 }
 
 
-void bingo_imputNum(int sel)
+void bingo_inputNum(int sel)
 {
 	int i,j;
 	
@@ -78,8 +79,42 @@ void bingo_imputNum(int sel)
 }
 
 
-int bingo_countCompletedLine(void)
+/*int bingo_countCompletedLine(void)
 {
+	int i,j;
+	int cnt=0;
+	int checkBingo;
+	
+	for (i=0;i<N_SIZE;i++)
+	{
+		checkBingo= 1;
+		for(j=0;j<N_SIZE;j++)
+		{
+			if (bingoBoard[i][j]>0)
+			{
+				checkBingo=0;
+				break;
+			
+			}
+		if (checkBingo==1)
+		{
+			cnt++;
+		}
+		}
+	}
 }
+*/
 
+int bingo_checkNum(int selNum)
+{
+	if(numberStatus[selNum]== BINGONUM_HOLE)
+	{
+		return BINGO_NUMSTATUS_ABSENT;
+	}
+	
+	else
+	{
+		return BINGO_NUMSTATUS_PRESENT;
+	}
+}
 
